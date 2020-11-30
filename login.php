@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "authentication.php";
+require_once "Authentication.php";
 if (!empty($_POST) && isset($_POST["username"]) && !empty($_POST["username"])){
     // echo "your username is ".$_POST["username"];
 } else {

@@ -1,5 +1,5 @@
 <?php
-require_once "authentication.php";
+require_once "Authentication.php";
 
 if (!empty($_POST) && 
     isset($_POST["logout"]) && 
