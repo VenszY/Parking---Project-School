@@ -1,30 +1,25 @@
 <?php
-session_start();
-require_once "auth.php";
-if (!empty($_POST) &&
-    isset($_PSOT(["logout"])) &&
-    !empty($_POST["logout"]) &&
-    $_POST["logout"] == "logout")     {
+require_once "authentication.php";
+
+if (!empty($_POST) && 
+    isset($_POST["logout"]) && 
+    !empty($_POST["logout"])) {
     $auth = new Authentication();
-    $auth->logout()
+    $auth->logout();
 }
-
-
-
-
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Home pahe</title>
+    <title>Home page</title>
 </head>
 <body>
     <div>
         <h1>Welcome to our project</h1>
     </div>
     <form method="POST" action="homepage.php">
-        <button type="submit" >Logout</button>
+        <input type="submit" name="logout" value="Logout">
     </form>
 </body>
 </html>
