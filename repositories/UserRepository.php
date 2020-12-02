@@ -51,7 +51,7 @@ class UserRepository extends Db {
     }
 
     public function showUser ($id) {
-        $sql = "SELECT * FROM user_credentials WHERE id=$id";
+        $sql = "SELECT * FROM user_credentials WHERE id=".$id;
         $result = $this->connection->query($sql);
         $User = $result->fetch();
 

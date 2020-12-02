@@ -29,7 +29,7 @@ class ParkingRepository extends Db {
     }
 
     public function showSpot ($id) {
-        $sql = "SELECT * FROM parking_spots WHERE id=$id";
+        $sql = "SELECT * FROM parking_spots WHERE id=".$id;
         $result = $this->connection->query($sql);
         $Spot = $result->fetch();
 
