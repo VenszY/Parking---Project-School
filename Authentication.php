@@ -22,7 +22,7 @@ class Authentication {
             $_SESSION["uid"] = $userFromDb["id"];
             header("Location: homepage.php");
         } else {
-            header("Location: index.html");
+            header("Location: index.php");
         }
     
     }
@@ -30,7 +30,7 @@ class Authentication {
     public function logout() {
         $_SESSION["uid"] = "";
         session_destroy();
-        header("Location: index.html");
+        header("Location: index.php");
     }
 
 }

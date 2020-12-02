@@ -19,12 +19,11 @@ class UserRepository extends Db {
                 FROM 
                     user_credentials
                 WHERE
-                    username = '".$this->username."' AND
-                    password = '".$this->password."'
-                ";
+                    username = '".$username."' AND
+                    password = '".$password."'
+                LIMIT 1";
         $stmt = $this->connection->query($sql);
         $user = $stmt->fetchAll();
-
 
         if(empty($user)) {
             return [];
@@ -32,8 +31,5 @@ class UserRepository extends Db {
         else {
             return $user[0]; 
         }
-        die();
     }
-
-
 }

@@ -1,4 +1,8 @@
 <?php
+session_start();
+if(empty($_SESSION["uid"])) {
+    header("Location: index.php");
+}
 require_once "Authentication.php";
 
 if (!empty($_POST) && 

@@ -11,9 +11,10 @@ if (!empty($_POST) &&
     
     $username = $_POST["username"];
     $password = $_POST["password"];
+    $hashedPassword = hash("sha512", $password); 
 
-    if ($userRepository->addNewUser($username, $password)) {
-        header("Location: index.html");
+    if ($userRepository->addNewUser($username, $hashedPassword)) {
+        header("Location: index.php");
     }
     
 }

@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!empty($_SESSION["uid"])) {
+    header("Location: homepage.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +13,7 @@
             <link type="text/css" rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div>
+    <div class="login">
         <form method="POST" action="login.php">
             <label>Username</label>
             <input type="text" name="username">
