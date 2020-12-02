@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__FILE__). "/views/navi.html";
+require_once dirname(__FILE__). "/views/navi.php";
 require_once dirname(__FILE__). "/views/parkingstatus.html";
           
 require_once dirname(__FILE__). "/repositories/ParkingRepository.php";

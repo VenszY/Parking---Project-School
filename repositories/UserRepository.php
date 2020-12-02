@@ -37,4 +37,48 @@ class UserRepository extends Db {
             return $user[0]; 
         }
     }
+
+    public function showAllUsers () {
+        $sql = "SELECT * FROM user_credentials";
+        $result = $this->connection->query($sql);
+        $allUsers = $result->fetchAll();
+
+        if(!empty($allUsers)) {
+            return $allUsers;
+        } else {
+            return [];
+        }
+    }
+
+    public function showUser ($id) {
+        $sql = "SELECT * FROM user_credentials WHERE id=$id";
+        $result = $this->connection->query($sql);
+        $User = $result->fetch();
+
+        if(!empty($User)) {
+            return $User;
+        } else {
+            return [];
+        }
+    }
+
+    public function promoteUser ($id) {
+        $sql = "
+            UPDATE 
+                user_credentials
+            SET 
+                access=0
+            WHERE id=".$id;
+        $this->connection->exec($sql);
+    }
+
+    public function demoteUser ($id) {
+        $sql = "
+            UPDATE 
+                user_credentials
+            SET 
+                access=1
+            WHERE id=".$id;
+        $this->connection->exec($sql);
+    }
 }
