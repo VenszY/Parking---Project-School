@@ -1,5 +1,5 @@
 <?php 
-require_once "UserRepository.php";
+require_once dirname(__FILE__). "/repositories/UserRepository.php";
 
 if (!empty($_POST) && 
     isset($_POST["username"]) && 
@@ -21,23 +21,7 @@ if (!empty($_POST) &&
 
 
 
-
+require_once dirname(__FILE__). "/views/registrationpage.html";
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Registration</title>
-</head>
-<body>
-    <form method="POST" action="registration.php">
-        <label>Username</label>
-        <input type="text" name="username">
-        <label>Password</label>
-        <input type="password" name="password">
-        <button type="submit">Create User</button>
-    </form>
-</body>
-</html>

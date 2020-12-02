@@ -3,7 +3,7 @@ session_start();
 if(empty($_SESSION["uid"])) {
     header("Location: index.php");
 }
-require_once "Authentication.php";
+require_once dirname(__FILE__). "/core/Authentication.php";
 
 if (!empty($_POST) && 
     isset($_POST["logout"]) && 
@@ -11,19 +11,7 @@ if (!empty($_POST) &&
     $auth = new Authentication();
     $auth->logout();
 }
+require_once dirname(__FILE__). "/views/navi.html";
+require_once dirname(__FILE__). "/views/homepage.html";
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Home page</title>
-</head>
-<body>
-    <div>
-        <h1>Welcome to our project</h1>
-    </div>
-    <form method="POST" action="homepage.php">
-        <input type="submit" name="logout" value="Logout">
-    </form>
-</body>
-</html>

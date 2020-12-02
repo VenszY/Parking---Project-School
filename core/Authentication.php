@@ -1,6 +1,6 @@
 <?php
 require_once "Db.php";
-require_once "UserRepository.php";
+require_once dirname(dirname(__FILE__)). "/repositories/UserRepository.php";
 
 
 class Authentication {
@@ -20,9 +20,9 @@ class Authentication {
         $userFromDb = $this->userRepository->getUserCredentials($this->username, $this->password);
         if (!empty($userFromDb)) {
             $_SESSION["uid"] = $userFromDb["id"];
-            header("Location: homepage.php");
+            header("Location: ../homepage.php");
         } else {
-            header("Location: index.php");
+            header("Location: ../index.php");
         }
     
     }
