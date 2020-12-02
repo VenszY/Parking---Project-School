@@ -1,25 +1,27 @@
+
 <?php
-require_once dirname(__FILE__). "/views/navi.html";
-require_once dirname(__FILE__). "/views/reservation.html";
+
 require_once dirname(__FILE__). "/repositories/ParkingRepository.php";
-$parkingRepository = new ParkingRepository();
-$spots = $parkingRepository->showFreeSpots();
-$ForT = $parkingRepository->decryptBool();
 
-echo "<table style = 'text-align=center'>
-        <tr>
-            <th>Spot Status</th>
-            <th>Spot Number</th>
-            <th>Spot Describtion</th>
-        </tr>";
-
-foreach($spots as $spot) {
-    echo "
-        <tr>
-            <td>".$spot['FreeOrTaken']."</td>
-            <td>".$spot['SpotNumber']."</td>
-            <td>".$spot['SpotDescribtion']."</td>
-        </tr>
-    ";
+if(!empty($_POST['reserve'])){
+    $spotid = $_POST['reserve'];
+} else {
+    $spotid = $_POST['release'];
 }
-echo "</table>";          
+
+$parkingRepository = new ParkingRepository();
+$spot = $parkingRepository->showSpot($spotid);
+
+
+if($spot['FreeOrTaken'] != false) {
+    $reserveSpot = $parkingRepository->reserveSpot($spotid);
+} else {
+    $reserveSpot = $parkingRepository->releaseSpot($spotid);
+    header("Location: parkingstatus.php");
+}
+ require_once dirname(__FILE__). "/views/navi.html";
+ 
+ ?>
+        <h1>Your reserved spot is <?php print_r($spot['SpotNumber']) ?>.<br><br> We are waiting you :)</h1>
+    </body>
+</html>

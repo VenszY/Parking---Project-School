@@ -1,22 +1,11 @@
 <?php
-session_start();
-if(empty($_SESSION["uid"])) {
-    header("Location: index.php");
-}
-require_once dirname(__FILE__). "/core/Authentication.php";
-
-if (!empty($_POST) && 
-    isset($_POST["logout"]) && 
-    !empty($_POST["logout"])) {
-    $auth = new Authentication();
-    $auth->logout();
-}
 require_once dirname(__FILE__). "/views/navi.html";
-require_once dirname(__FILE__). "/views/homepage.html";
-
+require_once dirname(__FILE__). "/views/parkingstatus.html";
+          
 require_once dirname(__FILE__). "/repositories/ParkingRepository.php";
 $parkingRepository = new ParkingRepository();
 $spots = $parkingRepository->showAllSpots();
+
 
 
 echo "<table style = 'text-align=center'>
@@ -37,9 +26,19 @@ foreach($spots as $spot) {
             <td>".$decryptedBool."</td> 
             <td>".$spot['SpotNumber']."</td>
             <td>".$spot['SpotDescribtion']."</td>
+            <td>";
+                if($spot['FreeOrTaken'] != false) {
+                    echo "<form method='POST' action='reservation.php'>
+                        <button type='submit' name='reserve' value='".$spot['id']."'>Reserve</button>
+                    </form>";
+                } else {
+                    echo "<form method='POST' action='reservation.php'>
+                        <button type='submit' name='release' value='".$spot['id']."'>Release</button>
+                    </form>";
+                }
+    echo "
+            </td>
         </tr>
     ";
 }
 echo "</table>";
-?>
-
