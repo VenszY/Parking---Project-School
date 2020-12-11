@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once dirname(__FILE__). "/views/navi.php";
 if(empty($_SESSION["uid"])) {
     header("Location: index.php");
 }
@@ -11,7 +11,6 @@ if (!empty($_POST) &&
     $auth = new Authentication();
     $auth->logout();
 }
-require_once dirname(__FILE__). "/views/navi.php";
 require_once dirname(__FILE__). "/views/homepage.html";
 
 require_once dirname(__FILE__). "/repositories/ParkingRepository.php";

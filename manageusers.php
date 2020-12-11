@@ -1,14 +1,14 @@
 <?php
-session_start();
+require_once dirname(__FILE__). "/views/navi.php";
 require_once dirname(__FILE__). "/repositories/UserRepository.php";
+$mainAdmin = 6;
 $userRepository = new UserRepository();
 $user = $userRepository->showUser($_SESSION['uid']);
-    if($user['id'] != 6 && $user['access'] != false) {
+    if($user['id'] != $mainAdmin && $user['access'] != false) {
         header("Location: homepage.php");
     }
 
 
-require_once dirname(__FILE__). "/views/navi.php";
 require_once dirname(__FILE__). "/views/manageusers.html";
 
 $users = $userRepository->showAllUsers();
@@ -31,7 +31,7 @@ foreach($users as $user) {
             <td>".$user['username']."</td>
             <td>".$decryptedBool."</td>
             <td>";
-            if($user['id'] != 6) {
+            if($user['id'] != $mainAdmin) {
                 if($user['access'] != false) {
                     echo "<form method='POST' action='controllers/UserManager.php'>
                         <button type='submit' name='promote' value='".$user['id']."'>Promote</button>

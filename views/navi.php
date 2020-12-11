@@ -10,6 +10,7 @@
             <li><a href="reservation.php">My Reservations</a></li> 
             <li><a href="parkingstatus.php">Parking Status</a></li>
             <?php
+                session_start();
                 require_once dirname(dirname(__FILE__)). "/repositories/UserRepository.php";
                 $userRepository = new UserRepository();
                 $user = $userRepository->showUser($_SESSION['uid']);
