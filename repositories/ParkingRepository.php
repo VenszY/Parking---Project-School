@@ -52,4 +52,41 @@ class ParkingRepository extends Db {
         }
     }
 
+    public function addNewSpot($spotNumber, $spotDescribtion) {
+        $sql = "INSERT INTO
+                     parking_spots(`id`, `FreeOrTaken`, `SpotNumber`, `SpotDescribtion`)
+                VALUES(
+                    NULL,
+                    1,
+                    '".$spotNumber."',
+                    '".$spotDescribtion."'
+                    )";
+        $this->connection->exec($sql);
+        return true;
+    }
+
+    public function updateSpotById($update_data) {
+        $sql = "
+            UPDATE 
+                parking_spots
+            SET 
+                `SpotNumber` = '".$update_data['spot_number']."',
+                `SpotDescribtion` = '".$update_data['describtion']."'
+            WHERE
+                id = ".$update_data['spot_id']."
+            ";
+        $this->connection->exec($sql);
+        return true;
+    }
+
+    public function deleteSpotById($id) {
+        $sql = "DELETE FROM
+                   parking_spots
+                WHERE
+                    id=".$id;;
+        
+        $this->connection->exec($sql);
+        return true;
+    }
+
 }

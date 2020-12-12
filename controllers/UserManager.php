@@ -15,8 +15,8 @@ $user = $userRepository->showUser($userid);
 
 if($user['access'] != false) {
     $userRepository->promoteUser($userid);
-    header("Location: ../manageusers.php");
+    header("Location: ../controlpanel.php");
 } else {
     $userRepository->demoteUser($userid);
-    header("Location: ../manageusers.php");
+    header("Location: ../controlpanel.php");
 }

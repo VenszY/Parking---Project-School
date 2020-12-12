@@ -41,4 +41,6 @@ foreach($spots as $spot) {
         </tr>
     ";
 }
-echo "</table>";
+echo "</table>
+    </body>
+    </html>";

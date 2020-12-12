@@ -6,16 +6,16 @@
 <body>
     <nav>
         <ul>
-            <li><a href="homepage.php">Home</a></li>
-            <li><a href="reservation.php">My Reservations</a></li> 
-            <li><a href="parkingstatus.php">Parking Status</a></li>
+            <li><a href="/Parking/homepage.php">Home</a></li>
+            <li><a href="/Parking/reservation.php">My Reservations</a></li> 
+            <li><a href="/Parking/parkingstatus.php">Parking Status</a></li>
             <?php
                 session_start();
                 require_once dirname(dirname(__FILE__)). "/repositories/UserRepository.php";
                 $userRepository = new UserRepository();
                 $user = $userRepository->showUser($_SESSION['uid']);
                 if($user['id'] == 6 || $user['access'] == false) {
-                    echo '<li><a href="manageusers.php">Manage User</a></li>';
+                    echo '<li><a href="/Parking/controlpanel.php">Control Panel</a></li>';
                 }
             ?>
             <li>
