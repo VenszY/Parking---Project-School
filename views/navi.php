@@ -7,8 +7,8 @@
     <nav>
         <ul>
             <li><a href="/Parking/homepage.php">Home</a></li>
-            <li><a href="/Parking/reservation.php">My Reservations</a></li> 
-            <li><a href="/Parking/parkingstatus.php">Parking Status</a></li>
+            <li><a href="/Parking/views/myreservation.php">My Reservations</a></li> 
+            <li><a href="/Parking/parkingstatus.php">Make Reservation</a></li>
             <?php
                 session_start();
                 require_once dirname(dirname(__FILE__)). "/repositories/UserRepository.php";
