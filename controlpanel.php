@@ -9,16 +9,17 @@ $user = $userRepository->showUser($_SESSION['uid']);
     }
 
 
-require_once dirname(__FILE__). "/views/manageusers.html";
+
 $users = $userRepository->showAllUsers();
+require_once dirname(__FILE__). "/views/manageusers.html";
 
 
 
-
-echo "<table style = 'text-align=center'>
-        <tr>
-            <th>Username</th>
-            <th>User Status</th>
+echo "<table  class='table table-bordered table-hover text text-center'>
+        <tr class='active'>
+            <th class='text text-center'>Username</th>
+            <th class='text text-center'>User Status</th>
+            <th class='text text-center'></th>
         </tr>";
 
 foreach($users as $user) {
@@ -28,18 +29,18 @@ foreach($users as $user) {
         $decryptedBool = "User";
     }
     echo "
-        <tr>
+        <tr class='active'>
             <td>".$user['username']."</td>
             <td>".$decryptedBool."</td>
             <td>";
             if($user['id'] != $mainAdmin) {
                 if($user['access'] != false) {
                     echo "<form method='POST' action='controllers/UserManager.php'>
-                        <button type='submit' name='promote' value='".$user['id']."'>Promote</button>
+                        <button class='btn btn-success' type='submit' name='promote' value='".$user['id']."'>Promote</button>
                     </form>";
                 } else {
                     echo "<form method='POST' action='controllers/UserManager.php'>
-                        <button type='submit' name='demote' value='".$user['id']."'>Demote</button>
+                        <button class='btn btn-danger' type='submit' name='demote' value='".$user['id']."'>Demote</button>
                     </form>";
                 }
             }
@@ -57,12 +58,13 @@ $spots = $parkingRepository->showAllSpots();
 require_once dirname(__FILE__). "/views/update.html";
 
 
-echo "<table style = 'text-align=center'>
-        <tr>
-            <th>Spot Status</th>
-            <th>Spot Number</th>
-            <th>Spot Describtion</th>
-            <th>Actions</th>
+echo "<table class ='table table-bordered text text-center table-hover'>
+        <tr class='active'>
+            <th class='text text-center'>Spot Status</th>
+            <th class='text text-center'>Spot Number</th>
+            <th class='text text-center'>Spot Describtion</th>
+            <th class='text text-center'></th>
+            <th></th>
         </tr>";
 
 foreach($spots as $spot) {
@@ -72,16 +74,18 @@ foreach($spots as $spot) {
         $decryptedBool = "Free";
     }
     echo "
-        <tr>
+        <tr class='active'>
             <td>".$decryptedBool."</td> 
             <td>".$spot['SpotNumber']."</td>
             <td>".$spot['SpotDescribtion']."</td>
             <td>
                 <form method='POST' action='./controllers/Update.php'>
-                    <button type='submit' name='spot_id' value='".$spot['id']."'>Upddate</button>
+                    <button class='btn btn-success' type='submit' name='spot_id' value='".$spot['id']."'>Upddate</button>
                 </form>
+            </td>
+            <td>
                 <form method='POST' action='./controllers/Delete.php'>    
-                    <button type='submit' name='delete' value='".$spot['id']."'>Delete</button>
+                    <button class='btn btn-danger' type='submit' name='delete' value='".$spot['id']."'>Delete</button>
                 </form>
             </td>
         </tr>
@@ -91,17 +95,22 @@ echo "</table>";
 
 require_once dirname(__FILE__). "/views/createnew.html";
 
-echo "<form method='POST' action='./controllers/AddNewSpot.php'>
-            <label>Spot Number</label>
-            <input type='text' name='SpotNumber'><br>
-            <label>Spot Describtion</label>
-            <textarea type='text' name='SpotDescription'></textarea><br>
-            <button type='submit' name='create'>Create</button>
-        </form>";
+echo "<div class='container '> 
+        <form class='form-inline' method='POST' action='./controllers/AddNewSpot.php'>
+            <div class='form-group'>
+                <label>Spot Number</label>
+                <input class='form-control' type='text' name='SpotNumber'>
+            </div>
+            <div class='form-group'>
+                <label>Spot Describtion</label>
+                <textarea class='form-control' type='text' name='SpotDescription'></textarea><br>
+            </div>
+            <div class='form-group'>
+                <button class='btn btn-success  ' type='submit' name='create'>Create</button>
+            </div>
+        </form>
+    </div>";
 
 
-
-
-echo"</body>
-</html>";
+require_once dirname(__FILE__). "/views/footer.html";
 ?>

@@ -3,18 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <title>Project Parking</title>
-    <link type="text/css" rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
-<body>
-    <div class="login">
-        <form method="POST" action="controllers/LoginController.php">
-            <label>Username</label>
-            <input type="text" name="username">
-            <label>Password</label>
-            <input type="password" name="password">
-            <button type="submit">Login</button>
-        </form>
+<style>
+  html,body{
+  height:100%;
+  padding:0;
+  margin:0;
+}
+*{
+  box-sizing:border-box;
+}
+.test{
+  width:1000px;
+  height:400px;
+}
+
+.box{
+  
+  width:100%;
+  height:100%;
+  
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  
+}
+</style>
+<body class="body">
+  <div class="box">
+    <div class="test">
+        <div class="row justify-content-center">
+            <div class="col-md-7 ">
+                <div class="card" >
+                    <form class='text-center'method="POST" action="controllers/LoginController.php">
+                        <h1 class='text-primary'>Welcome</h1>
+                        <div class='form-group col-md-4 col-md-offset-4 align-center '>
+                            <label >Username</label> 
+                            <input class="form-control" type="text" name="username">
+                        </div>
+                        <div class='form-group col-md-4 col-md-offset-4 align-center '>
+                            <label>Password</label>
+                            <input class="form-control" type="password" name="password">
+                        </div>
+                        <div class='form-group col-md-4 col-md-offset-4 align-center '>
+                            <button class='btn btn-primary' type="submit">Login</button>
+                        </div>
+                        <div class='form-group col-md-4 col-md-offset-4 align-center '>
+                            <a class="container ml-auto" href="registration.php">Sign in now!</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+          </div>
+        </div>
     </div>
-    <a href="registration.php">Sign in now!</a>
 </body>
 </html>
+
+
+<!-- 
+
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="views/css/style.css">
+        </head>
+<body>
+  <h2>Form</h2>
+  <br>
+  <form class="form-horizontal inputForm">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="name">Name &nbsp</label>
+      <div class="col-sm-2">
+        <input class="form-control" type="text">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Email &nbsp</label>
+      <div class="col-sm-2">
+        <input class="form-control" type="email">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button class="btn btn-primary">Sign Up</button>
+      </div>
+    </div>
+  </form>
+</body> -->

@@ -3,15 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Registration</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    
 </head>
 <body>
-    <form method="POST" action="registration.php">
-        <label>Username</label>
-        <input type="text" name="username">
-        <label>Password</label>
-        <input type="password" name="password">
-        <button type="submit">Create User</button>
+    
+    <form class="form-inline" method="POST" action="registration.php">
+        <div class='container '>
+            <label>Username</label>
+            <input type="text" name="username">
+        </div>
+        <div class='container '>
+            <label>Password</label>
+            <input type="password" name="password">
+        </div> 
+    <div class='container '>       
+    <button class='btn btn-primary' type="submit">Create User</button>
         <a href="index.php">Already have one</a>
-    </form>
+        </form>
+    </div>  
 </body>
 </html>

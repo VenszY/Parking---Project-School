@@ -9,23 +9,21 @@ class ParkingRepository extends Db {
     }
     
     public function reserveSpot ($id) {
-        $sql = "
-            UPDATE 
-                parking_spots
-            SET 
-                FreeOrTaken=0
-            WHERE id=".$id;
-        $this->connection->exec($sql);
+        $sql = "UPDATE 
+                    parking_spots
+                SET 
+                    FreeOrTaken=0
+                WHERE id=".$id;
+            $this->connection->exec($sql);
     }
 
     public function releaseSpot ($id) {
-        $sql = "
-            UPDATE 
-                parking_spots
-            SET 
-                FreeOrTaken=1
-            WHERE id=".$id;
-        $this->connection->exec($sql);
+        $sql = "UPDATE 
+                    parking_spots
+                SET 
+                    FreeOrTaken=1
+                WHERE id=".$id;
+            $this->connection->exec($sql);
     }
 
     public function showSpot ($id) {
@@ -39,6 +37,19 @@ class ParkingRepository extends Db {
             return [];
         }
     }
+
+    public function getUserReservation ($id) {
+        $sql = "SELECT * FROM parking_spots WHERE id=".$id;
+        $result = $this->connection->query($sql);
+        $Spot = $result->fetch();
+
+        if(!empty($Spot)) {
+            return $Spot;
+        } else {
+            return [];
+        }
+    }
+
 
     public function showAllSpots () {
         $sql = "SELECT * FROM parking_spots";
@@ -66,17 +77,16 @@ class ParkingRepository extends Db {
     }
 
     public function updateSpotById($update_data) {
-        $sql = "
-            UPDATE 
-                parking_spots
-            SET 
-                `SpotNumber` = '".$update_data['spot_number']."',
-                `SpotDescribtion` = '".$update_data['describtion']."'
-            WHERE
-                id = ".$update_data['spot_id']."
-            ";
-        $this->connection->exec($sql);
-        return true;
+        $sql = "UPDATE 
+                    parking_spots
+                SET 
+                    `SpotNumber` = '".$update_data['spot_number']."',
+                    `SpotDescribtion` = '".$update_data['describtion']."'
+                WHERE
+                    id = ".$update_data['spot_id']."
+                ";
+            $this->connection->exec($sql);
+            return true;
     }
 
     public function deleteSpotById($id) {

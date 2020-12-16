@@ -1,27 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Home page</title>
-</head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
+<!-- <!DOCTYPE html>
+<html lang="en">
 <body>
-    <nav>
-        <ul>
-            <li><a href="/Parking/homepage.php">Home</a></li>
-            <li><a href="/Parking/views/myreservation.php">My Reservations</a></li> 
-            <li><a href="/Parking/parkingstatus.php">Make Reservation</a></li>
-            <?php
-                session_start();
-                require_once dirname(dirname(__FILE__)). "/repositories/UserRepository.php";
-                $userRepository = new UserRepository();
-                $user = $userRepository->showUser($_SESSION['uid']);
-                if($user['id'] == 6 || $user['access'] == false) {
-                    echo '<li><a href="/Parking/controlpanel.php">Control Panel</a></li>';
-                }
-            ?>
-            <li>
-                <form method="POST" action="homepage.php">
-                    <input type="submit" name="logout" value="Logout">
-                </form>
-            </li>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Page 1-1</a></li>
+          <li><a href="#">Page 1-2</a></li>
+          <li><a href="#">Page 1-3</a></li>
         </ul>
+      </li>
+      <li><a href="#">Page 2</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>
+</body>
+</html> -->
+<body class='body text'>
+    <nav class="navbar-inverse navbar-fixed-top text text-center" style='margin:auto; text-align:center'>
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand text text-center" href="http://localhost/Parking/homepage.php">ParkIT <i class="fa fa-car" style="font-size:30px;color:#d9534f;"></i></a>
+            </div>
+
+          <ul class="nav navbar-nav ">
+              <li class="active nav-link" ><a href="/Parking/homepage.php"><i class="fa fa-fw fa-home" style='color:#d9534f'></i>Home</a></li>
+              <li  ><a class='nav-link' href="/Parking/views/myreservation.php">My Reservations</a></li> 
+              <li><a class='nav-link' href="/Parking/parkingstatus.php">Make Reservation</a></li>
+              <?php
+                  session_start();
+                  require_once dirname(dirname(__FILE__)). "/repositories/UserRepository.php";
+                  $userRepository = new UserRepository();
+                  $user = $userRepository->showUser($_SESSION['uid']);
+                  if($user['id'] == 6 || $user['access'] == false) {
+                      echo '<li><a href="/Parking/controlpanel.php">Control Panel</a></li>';
+                  }
+              ?>
+          </ul>
+          <ul class="nav navbar-nav navbar-right" style='padding:4px 4px 4px 4px' >   
+              <li>
+                      <form method="POST" action="homepage.php">
+                      <input class="btn btn-n btn-danger" style='margin-top:3px' type="submit" name="logout" value="Logout">
+                      </form>
+              </li>
+          </ul>
+        </div>
     </nav>
+    <br>
+    <br>
