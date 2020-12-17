@@ -39,7 +39,7 @@ class ParkingRepository extends Db {
     }
 
     public function getUserReservation ($id) {
-        $sql = "SELECT * FROM parking_spots WHERE id=".$id;
+        $sql = "SELECT * FROM parking_spots WHERE user_id=".$id;
         $result = $this->connection->query($sql);
         $Spot = $result->fetch();
 

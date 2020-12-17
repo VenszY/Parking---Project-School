@@ -31,3 +31,14 @@ body {
     flex: 1;
 }
 
+#footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    clear: both;
+}
+#divForm {
+    margin-bottom: 100px;
+}

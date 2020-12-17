@@ -95,20 +95,22 @@ echo "</table>";
 
 require_once dirname(__FILE__). "/views/createnew.html";
 
-echo "<div class='container '> 
-        <form class='form-inline' method='POST' action='./controllers/AddNewSpot.php'>
-            <div class='form-group'>
-                <label>Spot Number</label>
-                <input class='form-control' type='text' name='SpotNumber'>
-            </div>
-            <div class='form-group'>
-                <label>Spot Describtion</label>
-                <textarea class='form-control' type='text' name='SpotDescription'></textarea><br>
-            </div>
-            <div class='form-group'>
-                <button class='btn btn-success  ' type='submit' name='create'>Create</button>
-            </div>
-        </form>
+echo "<div id='divForm'>
+        <div class='container'> 
+            <form class='form-inline' method='POST' action='./controllers/AddNewSpot.php'>
+                <div class='form-group'>
+                    <label>Spot Number</label>
+                    <input class='form-control' type='text' name='SpotNumber'>
+                </div>
+                <div class='form-group'>
+                    <label>Spot Describtion</label>
+                    <textarea class='form-control' type='text' name='SpotDescription'></textarea><br>
+                </div>
+                <div class='form-group'>
+                    <button class='btn btn-success  ' type='submit' name='create'>Create</button>
+                </div>
+            </form>
+        </div>
     </div>";
 
 

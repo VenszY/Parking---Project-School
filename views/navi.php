@@ -42,10 +42,14 @@
               <li><a class='nav-link' href="/Parking/parkingstatus.php">Make Reservation</a></li>
               <?php
                   session_start();
+                  $mainAdmin = 6;
                   require_once dirname(dirname(__FILE__)). "/repositories/UserRepository.php";
                   $userRepository = new UserRepository();
+                  if(empty($_SESSION["uid"])) {
+                    header("Location: index.php");
+                  }
                   $user = $userRepository->showUser($_SESSION['uid']);
-                  if($user['id'] == 6 || $user['access'] == false) {
+                  if($user['id'] == $mainAdmin || $user['access'] == false) {
                       echo '<li><a href="/Parking/controlpanel.php">Control Panel</a></li>';
                   }
               ?>
